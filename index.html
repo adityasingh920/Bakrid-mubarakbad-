@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ईद-उल-अधा 2025</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #062e2e, #0c1a1a);
+      color: #fff;
+      font-family: 'Georgia', serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #main-container {
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid #ffd700;
+      border-radius: 15px;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 0 15px #ffd700;
+    }
+
+    #photo {
+      max-width: 80%;
+      height: auto;
+      margin-bottom: 20px;
+      transition: all 0.5s ease-in-out;
+      border: 5px solid #ffd700;
+      border-radius: 12px;
+    }
+
+    h2 {
+      font-size: 30px;
+      color: #ffd700;
+      text-shadow: 1px 1px 8px #000;
+    }
+
+    p {
+      font-size: 18px;
+      color: #fffacd;
+      margin: 10px 0 20px;
+    }
+
+    #from-name {
+      font-size: 20px;
+      color: #00ffcc;
+      margin: 10px 0;
+    }
+
+    #countdown {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: #00ffcc;
+      font-weight: bold;
+    }
+
+    .share-buttons,
+    #initialWhatsappBtn {
+      margin-top: 20px;
+    }
+
+    .share-buttons button,
+    #initialWhatsappBtn {
+      margin: 5px;
+      padding: 10px 16px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      color: #fff;
+      box-shadow: 0 0 10px #444;
+    }
+
+    .whatsapp,
+    #initialWhatsappBtn {
+      background-color: #25D366;
+    }
+
+    .facebook { background-color: #1877f2; }
+    .twitter { background-color: #1da1f2; }
+    .telegram { background-color: #0088cc; }
+
+    #nameInputSection {
+      margin-top: 20px;
+    }
+
+    #userName {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 80%;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 🔊 Background Music -->
+<audio autoplay loop>
+  <audio id="backgroundmusic.audio" src="Background.mp3" loop autoplay></audio>
+  आपका ब्राउज़र ऑडियो को सपोर्ट नहीं करता।
+</audio>
+
+<h2>आप सभी को ईद-उल-अधा (बकरीद) की दिल से मुबारकबाद!</h2>
+<p>अल्लाह से दुआ है कि आपकी क़ुर्बानी क़बूल हो और आपके घर में खुशहाली, अमन और बरकत आए।</p>
+
+<div id="main-container">
+  <div id="countdown">00:00:00:00</div>
+  <div id="from-name">आपकी तरफ से मुबारकबाद</div>
+  <img id="photo" src="bakrid.png" alt="Eid Image">
+</div>
+
+<div id="nameInputSection">
+  <p>आप अपना नाम डालें और मुबारकबाद दें:</p>
+  <input type="text" id="userName" placeholder="अपना नाम लिखें" />
+  <br><br>
+  <button id="initialWhatsappBtn" onclick="shareAndShowAll()">WhatsApp पर शेयर करें</button>
+</div>
+
+<div class="share-buttons" id="share-buttons" style="display: none;">
+  <button class="facebook" onclick="shareFacebook()">Facebook</button>
+  <button class="twitter" onclick="shareTwitter()">Twitter</button>
+  <button class="telegram" onclick="shareTelegram()">Telegram</button>
+</div>
+
+<script>
+  let senderName = "आपकी तरफ से";
+  const url = window.location.href;
+
+  function updateName() {
+    const input = document.getElementById("userName").value.trim();
+    if (input) {
+      senderName = input;
+      document.getElementById("from-name").innerText = `${senderName} की तरफ से मुबारकबाद`;
+    }
+  }
+
+  function shareAndShowAll() {
+    updateName();
+    shareWhatsApp();
+    document.getElementById("share-buttons").style.display = "flex";
+  }
+
+  function shareWhatsApp() {
+    const fullMessage = `${senderName} की तरफ से ईद-उल-अधा की दिल से मुबारकबाद!\n${url}`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(fullMessage)}`, '_blank');
+  }
+
+  function shareFacebook() {
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+  }
+
+  function shareTwitter() {
+    const tweet = `${senderName} की तरफ से ईद-उल-अधा की दिल से मुबारकबाद!`;
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}&url=${encodeURIComponent(url)}`, '_blank');
+  }
+
+  function shareTelegram() {
+    const fullMessage = `${senderName} की तरफ से ईद-उल-अधा की दिल से मुबारकबाद!`;
+    window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(fullMessage)}`, '_blank');
+  }
+
+  // Countdown logic
+  var countDownDate = new Date("June 7, 2025 00:00:00").getTime();
+  var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("countdown").style.display = "none";
+      document.getElementById("photo").style.maxWidth = "40%";
+    }
+  }, 1000);
+</script>
+
+</body>
+</html>
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'fb3433239b990fb1ecfe279255a8fdee',
+		'format' : 'iframe',
+		'height' : 60,
+		'width' : 468,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/fb3433239b990fb1ecfe279255a8fdee/invoke.js"></script>
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'fb3433239b990fb1ecfe279255a8fdee',
+		'format' : 'iframe',
+		'height' : 60,
+		'width' : 468,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/fb3433239b990fb1ecfe279255a8fdee/invoke.js"></script>
