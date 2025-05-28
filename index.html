@@ -95,13 +95,17 @@
       width: 80%;
       margin-top: 10px;
     }
+
+    #ad-container {
+      margin-top: 30px;
+    }
   </style>
 </head>
 <body>
 
 <!-- 🔊 Background Music -->
 <audio autoplay loop>
-  <audio id="backgroundmusic.audio" src="Background.mp3" loop autoplay></audio>
+  <source src="backgroundmusic.audio.mp3" type="audio/mpeg">
   आपका ब्राउज़र ऑडियो को सपोर्ट नहीं करता।
 </audio>
 
@@ -110,7 +114,7 @@
 
 <div id="main-container">
   <div id="countdown">00:00:00:00</div>
-  <div id="from-name">आपकी तरफ से मुबारकबाद</div>
+  <div id="from-name"></div>
   <img id="photo" src="bakrid.png" alt="Eid Image">
 </div>
 
@@ -127,6 +131,20 @@
   <button class="telegram" onclick="shareTelegram()">Telegram</button>
 </div>
 
+<!-- ✅ Ad is now after share buttons -->
+<div id="ad-container">
+  <script type="text/javascript">
+    atOptions = {
+      'key' : 'fb3433239b990fb1ecfe279255a8fdee',
+      'format' : 'iframe',
+      'height' : 60,
+      'width' : 468,
+      'params' : {}
+    };
+  </script>
+  <script type="text/javascript" src="//www.highperformanceformat.com/fb3433239b990fb1ecfe279255a8fdee/invoke.js"></script>
+</div>
+
 <script>
   let senderName = "आपकी तरफ से";
   const url = window.location.href;
@@ -136,6 +154,9 @@
     if (input) {
       senderName = input;
       document.getElementById("from-name").innerText = `${senderName} की तरफ से मुबारकबाद`;
+    } else {
+      senderName = "आपकी तरफ से";
+      document.getElementById("from-name").innerText = "";
     }
   }
 
@@ -164,6 +185,11 @@
     window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(fullMessage)}`, '_blank');
   }
 
+  // Real-time name update on input
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("userName").addEventListener("input", updateName);
+  });
+
   // Countdown logic
   var countDownDate = new Date("June 7, 2025 00:00:00").getTime();
   var x = setInterval(function() {
@@ -187,23 +213,3 @@
 
 </body>
 </html>
-<script type="text/javascript">
-	atOptions = {
-		'key' : 'fb3433239b990fb1ecfe279255a8fdee',
-		'format' : 'iframe',
-		'height' : 60,
-		'width' : 468,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/fb3433239b990fb1ecfe279255a8fdee/invoke.js"></script>
-<script type="text/javascript">
-	atOptions = {
-		'key' : 'fb3433239b990fb1ecfe279255a8fdee',
-		'format' : 'iframe',
-		'height' : 60,
-		'width' : 468,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/fb3433239b990fb1ecfe279255a8fdee/invoke.js"></script>
